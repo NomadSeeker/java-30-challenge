@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS-Clock</title>
+</head>
+<body>
+    <div class="container">
+        <div class="circle">
+            <div id="hour" class="hand hour"></div>
+            <div id="minute" class="hand minute"></div>
+            <div id="second" class="hand second"></div>
+        </div>
+    </div>
+
+    <script>
+        const sec = document.getElementById('second');
+        const min = document.getElementById('minute');
+        const hr = document.getElementById('hour');
+
+        // function setSeconds(){
+        //     let date = new Date();
+        //     let seconds = date.getSeconds();
+        //     let deg = (seconds / 60 * 360) + 90;
+        //     sec.style.transform = `rotate(${deg}deg)`;
+            
+        // }
+
+        // function setMinutes() {
+        //     let date = new Date();
+        //     let minutes = date.getMinutes();
+        //     let deg = (minutes / 60 * 360) + 90;
+        //     min.style.transform = `rotate(${deg}deg)`;
+          
+        // }
+
+        // function setHours() {
+        //     let date = new Date();
+        //     let hours = date.getHours();
+        //     let deg = (hours / 12 * 360) + 90;
+        //     hr.style.transform = `rotate(${deg}deg)`;
+            
+        // }
+
+        function setDate() {
+            let date = new Date();
+
+            let seconds = date.getSeconds();
+            let degSec = (seconds / 60 * 360) + 90;
+            sec.style.transform = `rotate(${degSec}deg)`;
+
+            let minutes = date.getMinutes();
+            let degMin = (minutes / 60 * 360) + 90;
+            min.style.transform = `rotate(${degMin}deg)`;
+
+            let hours = date.getHours();
+            let degHr = (hours / 12 * 360) + 90;
+            hr.style.transform = `rotate(${degHr}deg)`;
+            
+
+        }
+
+        setInterval(setDate, 1000);
+        // setInterval(setSeconds, 1000);
+        // setInterval(setMinutes, 60000);
+        // setInterval(setHours, 3600000);
+        
+    </script>
+</body>
+</html>

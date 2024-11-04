@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drum Kit</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        h1>Drum kit</h1>
+        <div class="keyboard">
+            <div class="note" data-key="a"><audio id='au1' src="sounds/clap.wav"></audio><h1>A</h1><p>CLAP</p></div>
+            <div class="note" data-key="s"><audio id='au2' src="sounds/hihat.wav"></audio><h1>S</h1><p>HIHAT</p></div>
+            <div class="note" data-key="d"><audio id='au3' src="sounds/kick.wav"></audio><h1>D</h1><p>KICK</p></div>
+            <div class="note" data-key="f"><audio id='au4' src="sounds/openhat.wav"></audio><h1>F</h1><p>OPENHAT</p></div>
+            <div class="note" data-key="g"><audio id='au5' src="sounds/boom.wav"></audio><h1>G</h1><p>BOOM</p></div>
+            <div class="note" data-key="h"><audio id='au6' src="sounds/ride.wav"></audio><h1>H</h1><p>RIDE</p></div>
+            <div class="note" data-key="j"><audio id='au7' src="sounds/snare.wav"></audio><h1>J</h1><p>SNARE</p></div>
+            <div class="note" data-key="k"><audio id='au8' src="sounds/tom.wav"></audio><h1>K</h1><p>TOM</p></div>
+            <div class="note" data-key="l"><audio id='au9' src="sounds/tink.wav"></audio><h1>L</h1><p>TINK</p></div>
+        </div>
+
+        <script>
+            let a = document.querySelector('#au1');
+            let s = document.querySelector('#au2');
+            let d = document.querySelector('#au3');
+            let f = document.querySelector('#au4');
+            let g = document.querySelector('#au5');
+            let h = document.querySelector('#au6');
+            let j = document.querySelector('#au7');
+            let k = document.querySelector('#au8');
+            let l = document.querySelector('#au9');
+
+            function removeTransition(e) {
+                if(e.propertyName !== 'transform') return;
+                e.target.classList.remove('playing');
+            }
+
+            function playSound(e){
+                
+                const note = document.querySelector(`div[data-key="${e.key.toLowerCase()}"]`);
+                note.classList.add('playing');
+                switch(e.key.toLowerCase()){
+                    case 'a': if(!a) return;
+                        a.currentTime = 0;
+                        a.play();
+                        break;
+                    case 's':if(!s) return;
+                        s.currentTime = 0;
+                        s.play();
+                        break;
+                    case 'd': if(!d) return;
+                        d.currentTime = 0;
+                        d.play();
+                        break;
+                    case 'f': if(!f) return;
+                        f.currentTime = 0;
+                        f.play();
+                        break;
+                    case 'g': if(!g) return;
+                        g.currentTime = 0;
+                        g.play();
+                        break;
+                    case 'h': if(!h) return;
+                        h.currentTime = 0;
+                        h.play();
+                        break;  
+                    case 'j': if(!j) return;
+                        j.currentTime = 0;
+                        j.play();
+                        break;
+                    case 'k': if(!k) return;
+                        k.currentTime = 0;
+                        k.play();
+                        break;
+                    case 'l': if(!l) return;
+                        l.currentTime = 0;
+                        l.play();
+                        break;
+                }
+            }
+
+            const notes = Array.from(document.querySelectorAll('.note'));
+            notes.forEach(note => note.addEventListener('transitionend', removeTransition));
+            window.addEventListener('keypress', playSound);
+
+        </script>
+    </body>
+</html>
