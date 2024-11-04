@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CSS Variables</title>
+</head>
+<body>
+    <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    
+        <label for="blur">Blur:</label>
+        <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    
+        <label for="base">Base Color</label>
+        <input id="base" type="color" name="base" value="#ffc600">
+
+    
+      </div>
+
+      <img src="/images/city.jpg">
+
+    <script>
+        //A shorter way to do the challenge, by the instructor
+        const inputs = document.querySelectorAll('.controls input');
+        
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+        
+        //My way of doing the challenge
+
+        // let root = document.documentElement;
+        // const bgColor = document.getElementById('base');
+        // const blr = document.getElementById('blur');
+        // const pd = document.getElementById('spacing');
+        // const suffix = blr.dataset.sizing || "";
+
+        // function updateBgColor(e) {
+        //     root.style.setProperty('--base', e.target.value);
+            
+        // }
+
+        // function updateBlur(e) {
+        //     root.style.setProperty('--blur', e.target.value+suffix);
+        //     console.log(e.target.name);
+        // }
+
+        // function updateSpacing(e) {
+        //     root.style.setProperty('--spacing', e.target.value+suffix);
+        // }
+
+        // bgColor.addEventListener('change', updateBgColor);
+        // blr.addEventListener('change', updateBlur);
+        // pd.addEventListener('change', updateSpacing);
+
+        
+        
+    
+    </script>
+</body>
+</html>
